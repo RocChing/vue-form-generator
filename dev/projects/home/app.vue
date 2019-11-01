@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<h1>Basic</h1>
+		<h1>测试表单</h1>
 		<div class="row">
 			<div class="col-sm-12">
 				<vue-form-generator
@@ -26,13 +26,31 @@ import mixinUtils from "../../mixins/utils.js";
 export default {
 	mixins: [mixinUtils],
 	data() {
+		let model = {
+			name: ""
+		};
 		let schema = {
-			fields: []
+			fields: [
+				{
+					type: "input_b",
+					inputType: "text",
+					label: "姓名",
+					model: "name",
+					attributes: {
+						input: {
+							"data-toggle": "tooltip"
+						},
+						wrapper: {
+							"data-target": "input"
+						}
+					}
+				}
+			]
 		};
 		return {
 			isNewModel: false,
 			selected: [],
-			model: {},
+			model: model,
 			schema: schema,
 			formOptions: {
 				validateAfterLoad: true,
@@ -42,20 +60,20 @@ export default {
 		};
 	},
 	methods: {
-    showWarning() {
+		showWarning() {
 			if (this.$refs.form && this.$refs.form.errors) {
 				return this.$refs.form.errors.length > 0;
 			}
 		},
 
 		onValidated(res, errors) {
-			//console.log("VFG validated:", res, errors);
+			console.log("VFG validated:", res, errors);
 		},
 
 		modelUpdated(newVal, schema) {
-			//console.log("main model has updated", newVal, schema);
+			console.log("main model has updated", newVal, schema);
 		}
-  }
+	}
 };
 </script>
 <style scoped>
