@@ -9,6 +9,13 @@ forEach(coreFields.keys(), (key) => {
 	fieldComponents[compName] = coreFields(key).default;
 });
 
+let baseFields = require.context('../fiels/base', false, /^\.\/field([\w-_]+)\.vue$/);
+forEach(baseFields.keys(), key => {
+	let compName = key.replace(/^\.\//, "").replace(/\.vue/, "");
+	compName += 'b_';
+	fieldComponents[compName] = baseFields(key).default;
+});
+
 if (process.env.FULL_BUNDLE) {
 	let optionalFields = require.context("../fields/optional", false, /^\.\/field([\w-_]+)\.vue$/);
 
