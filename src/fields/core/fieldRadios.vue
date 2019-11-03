@@ -1,5 +1,5 @@
 <template>
-  <div :disabled="disabled" v-attributes="'wrapper'">
+  <div :disabled="disabled" v-attributes="'wrapper'" :class="fieldWrapperClasses">
     <template v-if="isInLine">
       <label
         v-for="item in items"

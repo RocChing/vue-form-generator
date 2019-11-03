@@ -101,9 +101,12 @@ export default {
       let fieldOptions = this.getValueFromOption(this.field, "fieldOptions");
       let condition = this.field.type === "input" && !isNil(fieldOptions);
       let relevantType = condition ? fieldOptions.inputType : this.field.type;
-      const typeWithoutLabel = ["button", "submit", "reset"];
+      let renderLabel = condition
+        ? objGet(fieldOptions, "renderLabel", true)
+        : true;
+      //const typeWithoutLabel = ["button", "submit", "reset"];
 
-      return !typeWithoutLabel.includes(relevantType);
+      return renderLabel; //&& !typeWithoutLabel.includes(relevantType);
     },
     fieldHasHint() {
       return !isNil(this.field.hint);
@@ -113,8 +116,7 @@ export default {
     },
     fieldRowClasses() {
       let baseClasses = {
-        [objGet(this.options, "validationErrorClass", "")]: this
-          .fieldHasErrors,
+        [objGet(this.options, "validationErrorClass", "")]: this.fieldHasErrors,
         [objGet(this.options, "validationSuccessClass", "")]:
           !this.fieldHasErrors && this.childTouched,
         [objGet(this.options, "validationCleanClass", "")]:

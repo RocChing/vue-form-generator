@@ -1,4 +1,6 @@
 <template>
+<div :class="fieldWrapperClasses"
+		v-attributes="'wrapper'">
 	<select 
 		v-model="value"
 		:disabled="disabled"
@@ -26,6 +28,7 @@
 				:key="getItemValue(item)"> {{ getItemName(item) }}</option>
 		</template>
 	</select>
+</div>
 </template>
 
 <script>

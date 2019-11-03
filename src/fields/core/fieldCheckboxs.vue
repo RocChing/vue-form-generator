@@ -1,5 +1,5 @@
 <template>
-  <div :disabled="disabled" v-attributes="'wrapper'">
+  <div :disabled="disabled" v-attributes="'wrapper'" :class="fieldWrapperClasses">
     <template v-if="isInLine">
       <label
         v-for="item in items"
@@ -117,7 +117,6 @@ export default {
     isItemChecked(item) {
       //   let currentValue = this.getItemValue(item);
       //   return currentValue === this.value;
-      console.log(this.value);
       return this.value && this.value.indexOf(this.getItemValue(item)) !== -1;
     },
     onChanged(event, item) {
