@@ -8,6 +8,8 @@ import fieldSelect from "../fields/core/fieldSelect.vue";
 import fieldSubmit from "../fields/core/fieldSubmit.vue";
 import fieldTextArea from "../fields/core/fieldTextArea.vue";
 import fieldUpload from "../fields/core/fieldUpload.vue";
+
+import fieldCheckboxs from "../fields/core/fieldCheckboxs.vue";
 // optional
 import fieldCleave from "../fields/optional/fieldCleave.vue";
 import fieldDateTimePicker from "../fields/optional/fieldDateTimePicker.vue";
@@ -23,8 +25,9 @@ import fieldStaticMap from "../fields/optional/fieldStaticMap.vue";
 import fieldSwitch from "../fields/optional/fieldSwitch.vue";
 import fieldVueMultiSelect from "../fields/optional/fieldVueMultiSelect.vue";
 
-export {
+export default {
 	fieldCheckbox,
+	fieldCheckboxs,
 	fieldChecklist,
 	fieldInput,
 	fieldLabel,

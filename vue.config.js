@@ -13,10 +13,10 @@ const banner = `
 const generateDevProjects = () => {
 	const devProjects = JSON.parse(process.env.VUE_APP_DEV_PROJECT);
 	let devConfig = {
-		index: {
-			entry: "./dev/index.js",
-			title: "vue-form-generator index"
-		}
+		// index: {
+		// 	entry: "./dev/index.js",
+		// 	title: "vue-form-generator index"
+		// }
 	};
 	devProjects.forEach((projectName) => {
 		devConfig[projectName] = {

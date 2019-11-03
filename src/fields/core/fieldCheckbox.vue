@@ -18,9 +18,3 @@ export default {
 	mixins: [abstractField]
 };
 </script>
-
-<style lang="scss">
-.vue-form-generator .field-checkbox input {
-	margin-left: 12px;
-}
-</style>

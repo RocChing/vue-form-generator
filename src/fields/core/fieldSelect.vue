@@ -1,5 +1,5 @@
 <template>
-	<select class="form-control"
+	<select 
 		v-model="value"
 		:disabled="disabled"
 		:name="inputName"

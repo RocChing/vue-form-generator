@@ -92,7 +92,10 @@ export default {
 			return this.getValueFromOption(this.schema, "disabled");
 		},
 		fieldClasses() {
-			return this.getValueFromOption(this.schema, "fieldClasses", []);
+			return this.getValueFromOption(this.schema, "fieldClasses", ["form-control"]);
+		},
+		fieldWrapperClasses() {
+			return this.getValueFromOption(this.schema, "fieldWrapperClasses", []);
 		},
 		fieldOptions() {
 			return this.getValueFromOption(this.schema, "fieldOptions", {});
@@ -301,8 +304,8 @@ export default {
 		this.eventBus.$emit("field-registering");
 	},
 	mounted() {
-		const diff = function(a, b) {
-			return b.filter(function(i) {
+		const diff = function (a, b) {
+			return b.filter(function (i) {
 				return a.indexOf(i) < 0;
 			});
 		};
@@ -329,6 +332,9 @@ export default {
 			"styleClasses",
 			"labelClasses",
 			"fieldClasses",
+			"fieldWrapperClasses",
+			"radioLabelClasses",
+			"checkboxLabelClasses",
 			"fieldOptions",
 			"values",
 			"buttons",

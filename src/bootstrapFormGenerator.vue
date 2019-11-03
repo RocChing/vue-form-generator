@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="abc"
+		class="vue-form-generator"
 		v-if='schema != null'>
 		<form-group
 			:tag="tag"

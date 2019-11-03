@@ -9,10 +9,10 @@
       >
         <input
           :id="fieldID"
-          type="radio"
+          type="checkbox"
           :disabled="disabled"
           :name="id"
-          @click="onSelection(item)"
+          @change="onChanged($event, item)"
           :value="getItemValue(item)"
           :checked="isItemChecked(item)"
           :class="myClasses"
@@ -23,7 +23,7 @@
       </label>
     </template>
     <template v-else>
-		<div
+      <div
         v-for="item in items"
         :key="getItemValue(item)"
         :class="myLabelClasses"
@@ -31,10 +31,10 @@
       >
         <input
           :id="fieldID"
-          type="radio"
+          type="checkbox"
           :disabled="disabled"
           :name="id"
-          @click="onSelection(item)"
+          @change="onChanged($event, item)"
           :value="getItemValue(item)"
           :checked="isItemChecked(item)"
           :class="myClasses"
@@ -43,16 +43,16 @@
         />
         {{ getItemName(item) }}
       </div>
-	</template>
+    </template>
   </div>
 </template>
 
 <script>
-import { isObject } from "lodash";
+import { isObject, isNil, clone } from "lodash";
 import abstractField from "../abstractField";
 
 export default {
-  name: "field-radios",
+  name: "field-checkboxs",
   mixins: [abstractField],
 
   computed: {
@@ -71,8 +71,8 @@ export default {
       return this.getValueFromOption(this.schema, "fieldClasses", []);
     },
     myLabelClasses() {
-      return this.getValueFromOption(this.schema, "radioLabelClasses", [
-        "radio-inline"
+      return this.getValueFromOption(this.schema, "checkboxLabelClasses", [
+        "checkbox-inline"
       ]);
     },
     isInLine() {
@@ -115,8 +115,28 @@ export default {
       this.value = this.getItemValue(item);
     },
     isItemChecked(item) {
-      let currentValue = this.getItemValue(item);
-      return currentValue === this.value;
+      //   let currentValue = this.getItemValue(item);
+      //   return currentValue === this.value;
+      console.log(this.value);
+      return this.value && this.value.indexOf(this.getItemValue(item)) !== -1;
+    },
+    onChanged(event, item) {
+      let isChecked = event.target.checked;
+      if (isNil(this.value) || !Array.isArray(this.value)) {
+        this.value = [];
+      }
+
+      if (isChecked) {
+        // Note: If you modify this.value array, it won't trigger the `set` in computed field
+        const arr = clone(this.value);
+        arr.push(this.getItemValue(item));
+        this.value = arr;
+      } else {
+        // Note: If you modify this.value array, it won't trigger the `set` in computed field
+        const arr = clone(this.value);
+        arr.splice(this.value.indexOf(this.getItemValue(item)), 1);
+        this.value = arr;
+      }
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
-	<div class="wrapper"
+	<div :class="fieldWrapperClasses"
 		v-attributes="'wrapper'">
-		<input class="form-control"
+		<input
 			:id="fieldID"
 			:type="inputType"
 			:value="value"
@@ -163,23 +163,23 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.vue-form-generator .field-input {
-	.wrapper {
-		width: 100%;
-	}
-	input[type="radio"] {
-		width: 100%;
-	}
-	input[type="color"] {
-		width: 60px;
-	}
-	input[type="range"] {
-		padding: 0;
-	}
+// <style lang="scss">
+// .vue-form-generator .field-input {
+// 	.wrapper {
+// 		width: 100%;
+// 	}
+// 	input[type="radio"] {
+// 		width: 100%;
+// 	}
+// 	input[type="color"] {
+// 		width: 60px;
+// 	}
+// 	input[type="range"] {
+// 		padding: 0;
+// 	}
 
-	.helper {
-		margin: auto 0.5em;
-	}
-}
-</style>
+// 	.helper {
+// 		margin: auto 0.5em;
+// 	}
+// }
+// </style>

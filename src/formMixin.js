@@ -2,7 +2,7 @@ import { isArray, isString } from "lodash";
 
 export default {
 	methods: {
-		getStyleClasses(field, baseClasses) {
+		getStyleClasses(field, baseClasses, defaults) {
 			let styleClasses = field.styleClasses;
 
 			if (isArray(styleClasses)) {
@@ -11,6 +11,13 @@ export default {
 				});
 			} else if (isString(styleClasses)) {
 				baseClasses[styleClasses] = true;
+			}
+			else {
+				if (defaults && defaults.length > 0) {
+					defaults.forEach((c) => {
+						baseClasses[c] = true;
+					});
+				}
 			}
 			return baseClasses;
 		}

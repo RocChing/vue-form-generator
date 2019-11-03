@@ -127,7 +127,7 @@ export default {
 		groupRowClasses() {
 			// TODO find a way to detect errors in child to add some classes (error/valid/etc)
 			let baseClasses = {
-				"field-group": true
+				"field-group": false
 			};
 			if (!isNil(this.group)) {
 				baseClasses = this.getStyleClasses(this.group, baseClasses);
@@ -160,9 +160,10 @@ export default {
 	created() {
 		this.eventBus.$on("field-validated", () => {
 			this.$nextTick(() => {
+				let clsName = objGet(this.options, "validationErrorClass", "error");
 				let containFieldWithError =
 					this.$refs.group.querySelector(
-						".form-element." + objGet(this.options, "validationErrorClass", "error")
+						"div." + clsName
 					) !== null;
 				this.validationClass = {
 					[objGet(this.options, "validationErrorClass", "error")]: containFieldWithError,
