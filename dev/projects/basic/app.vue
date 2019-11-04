@@ -53,7 +53,8 @@ export default {
         province: null,
         gender: 3,
         country: "",
-        hobby: []
+        hobby: [],
+        file: null
       },
       schema: {
         fields: [
@@ -110,6 +111,19 @@ export default {
               { id: 3, name: "上海市" },
               { id: 4, name: "重庆市" }
             ]
+          },
+          {
+            type: "upload",
+            label: "附件",
+            placeholder: "选择文件上传",
+            model: "file",
+            fieldOptions: {
+              //multiple: "multiple",
+              onChanged: (model, schema, event, file) => {
+                console.log(model, schema);
+                console.log(event, file);
+              }
+            }
           },
           {
             type: "textArea",

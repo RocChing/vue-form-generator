@@ -1,7 +1,7 @@
 <template >
-	<div class="wrapper"
+	<div :class="fieldWrapperClasses"
 		v-attributes="'wrapper'">
-		<input class="form-control"
+		<input :class="fieldClasses"
 			:id="fieldID"
 			type="file"
 			:name="inputName"
@@ -33,14 +33,3 @@ export default {
 	}
 };
 </script>
-
-<style lang="scss">
-.vue-form-generator .field-input {
-	.wrapper {
-		width: 100%;
-	}
-	.helper {
-		margin: auto 0.5em;
-	}
-}
-</style>
