@@ -1,5 +1,5 @@
 <template>
-  <div :disabled="disabled" v-attributes="'wrapper'" :class="fieldWrapperClasses">
+  <div :disabled="disabled" v-attributes="'wrapper'" :class="myWrapperClasses">
     <template v-if="isInLine">
       <label
         v-for="item in items"
@@ -74,6 +74,9 @@ export default {
       return this.getValueFromOption(this.schema, "checkboxLabelClasses", [
         "checkbox-inline"
       ]);
+    },
+    myWrapperClasses() {
+      return ["minheight34", ...this.fieldWrapperClasses];
     },
     isInLine() {
       return this.getValueFromOption(this.schema, "isInLine", true);

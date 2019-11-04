@@ -129,6 +129,7 @@ export default {
 			let baseClasses = {
 				"field-group": false
 			};
+	
 			if (!isNil(this.group)) {
 				baseClasses = this.getStyleClasses(this.group, baseClasses);
 			}

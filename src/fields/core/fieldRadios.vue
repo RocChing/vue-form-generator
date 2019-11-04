@@ -1,5 +1,5 @@
 <template>
-  <div :disabled="disabled" v-attributes="'wrapper'" :class="fieldWrapperClasses">
+  <div :disabled="disabled" v-attributes="'wrapper'" :class="myWrapperClasses">
     <template v-if="isInLine">
       <label
         v-for="item in items"
@@ -23,7 +23,7 @@
       </label>
     </template>
     <template v-else>
-		<div
+      <div
         v-for="item in items"
         :key="getItemValue(item)"
         :class="myLabelClasses"
@@ -43,7 +43,7 @@
         />
         {{ getItemName(item) }}
       </div>
-	</template>
+    </template>
   </div>
 </template>
 
@@ -74,6 +74,9 @@ export default {
       return this.getValueFromOption(this.schema, "radioLabelClasses", [
         "radio-inline"
       ]);
+    },
+    myWrapperClasses() {
+      return ["minheight34", ...this.fieldWrapperClasses];
     },
     isInLine() {
       return this.getValueFromOption(this.schema, "isInLine", true);
