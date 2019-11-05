@@ -68,6 +68,7 @@ export default {
         name: "",
         age: null,
         birthday: null,
+        goToSchoolDate: null,
         province: null,
         gender: null,
         country: "",
@@ -163,6 +164,17 @@ export default {
               required: true,
               validator: ["date"],
               placeholder: "请输入生日"
+            },
+            {
+              type: "dateTimePicker",
+              fieldOptions: {
+                format: "YYYY-MM-DD"
+              },
+              label: "入学日期",
+              model: "goToSchoolDate",
+              required: true,
+              validator: ["date"],
+              placeholder: "请输入入学日期"
             },
             {
               type: "checkboxs",
