@@ -77,7 +77,6 @@ export default {
 
 			set(newValue) {
 				this.touch();
-
 				let oldValue = this.value;
 				newValue = this.formatValueToModel(newValue);
 

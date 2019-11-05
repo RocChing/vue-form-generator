@@ -208,12 +208,11 @@ export default {
               type: "upload",
               label: "附件",
               placeholder: "选择文件上传",
-              model: "file",
+              //model: "file",
               fieldOptions: {
                 //multiple: "multiple",
                 onChanged: (model, schema, event, file) => {
-                  console.log(model, schema);
-                  console.log(event, file);
+                  console.log(event.target.files)
                 }
               }
             },
