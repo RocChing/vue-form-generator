@@ -70,6 +70,14 @@ const validators = {
 			return res;
 		}
 
+		if (isNaN(value)) {
+			if (field.required) {
+				return [msg(messages.fieldIsRequired)];
+			} else {
+				return [];
+			}
+		}
+
 		let err = [];
 		if (isNumber(value)) {
 			if (!isNil(field.fieldOptions) && !isNil(field.fieldOptions.min) && value < field.fieldOptions.min) {
@@ -82,7 +90,6 @@ const validators = {
 		} else {
 			err.push(msg(messages.invalidNumber));
 		}
-
 		return err;
 	},
 

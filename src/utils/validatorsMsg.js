@@ -1,6 +1,6 @@
 let validatorsMsg = {
-  fieldIsRequired: "字段是必须的",
-  invalidFormat: "格式不正确!",
+  fieldIsRequired: "字段是必填的",
+  invalidFormat: "格式不正确",
 
   numberTooSmall: "允许的最小值是: {0}",
   numberTooBig: "允许的最大值是: {0}",

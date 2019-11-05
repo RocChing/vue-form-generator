@@ -124,7 +124,7 @@ export default {
               },
               label: "姓名",
               model: "name",
-              required: true,
+              //required: true,
               validator: "required",
               placeholder: "请输入姓名"
             },
@@ -137,14 +137,14 @@ export default {
               label: "年龄",
               model: "age",
               required: true,
-              validator: ["required", "number"],
+              validator: ["number"],
               placeholder: "请输入年龄"
             },
             {
               type: "radios",
               label: "性别",
               model: "gender",
-              required: true,
+              //required: true,
               validator: "required",
               values: [
                 { value: 1, name: "男" },
@@ -168,7 +168,7 @@ export default {
               label: "省份",
               model: "province",
               placeholder: "请输入省份",
-              required: true,
+              //required: true,
               validator: "required",
               fieldOptions: {
                 noneSelectedText: "请选择"
@@ -197,7 +197,7 @@ export default {
               type: "textArea",
               model: "desc",
               label: "描述",
-              required: true,
+              //required: true,
               validator: "required",
               fieldOptions: {
                 rows: 5
