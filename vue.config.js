@@ -87,6 +87,12 @@ module.exports = {
 		loaderOptions: {}
 	},
 	devServer: {
+		port: 9000,
 		contentBase: [path.resolve("dev/projects")]
+	},
+	configureWebpack: {
+		output: {
+			libraryExport: 'default'
+		}
 	}
 };

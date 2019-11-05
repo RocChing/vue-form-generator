@@ -3,14 +3,16 @@ import * as schema from "./utils/schema.js";
 import validators from "./utils/validators.js";
 import * as fieldsLoader from "./utils/fieldsLoader.js";
 import abstractField from "./fields/abstractField.js";
+import { defaults } from 'lodash';
 
 const install = (Vue, options = {}) => {
-	if (options.fields) {
-		options.fields.forEach((field) => {
-			if (typeof field.name !== "undefined") {
-				Vue.component(field.name, field);
-			}
-		});
+	options = defaults(options, fieldsLoader.default);
+	for (let key in options) {
+		let field = options[key];
+		let name = field.name;
+		if (name && name !== '') {
+			Vue.component(name, field);
+		}
 	}
 	Vue.component("VueFormGenerator", component);
 };
