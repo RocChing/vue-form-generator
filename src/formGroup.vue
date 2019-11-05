@@ -159,19 +159,19 @@ export default {
 		}
 	},
 	created() {
-		this.eventBus.$on("field-validated", () => {
-			this.$nextTick(() => {
-				let clsName = objGet(this.options, "validationErrorClass", "error");
-				let containFieldWithError =
-					this.$refs.group.querySelector(
-						"div." + clsName
-					) !== null;
-				this.validationClass = {
-					[objGet(this.options, "validationErrorClass", "error")]: containFieldWithError,
-					[objGet(this.options, "validationSuccessClass", "valid")]: !containFieldWithError
-				};
-			});
-		});
+		// this.eventBus.$on("field-validated", () => {
+		// 	this.$nextTick(() => {
+		// 		let clsName = objGet(this.options, "validationErrorClass", "error");
+		// 		let containFieldWithError =
+		// 			this.$refs.group.querySelector(
+		// 				"div." + clsName
+		// 			) !== null;
+		// 		this.validationClass = {
+		// 			[objGet(this.options, "validationErrorClass", "error")]: containFieldWithError,
+		// 			[objGet(this.options, "validationSuccessClass", "valid")]: !containFieldWithError
+		// 		};
+		// 	});
+		// });
 	}
 };
 </script>

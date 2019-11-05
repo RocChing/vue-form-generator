@@ -1,5 +1,6 @@
 import { defaults, isNil, isNumber, isInteger, isString, isArray, isFunction } from "lodash";
 import fecha from "fecha";
+import validatorsMsg from '../utils/validatorsMsg';
 
 let resources = {
 	fieldIsRequired: "This field is required!",
@@ -32,6 +33,8 @@ let resources = {
 	invalidTextContainNumber: "Invalid text! Cannot contains numbers or special characters",
 	invalidTextContainSpec: "Invalid text! Cannot contains special characters"
 };
+
+resources = defaults(validatorsMsg, resources);
 
 function checkEmpty(value, required, messages = resources) {
 	if (isNil(value) || value === "") {
@@ -267,8 +270,12 @@ const validators = {
 Object.keys(validators).forEach((name) => {
 	const fn = validators[name];
 	if (isFunction(fn)) {
-		fn.locale = (customMessages) => (value, field, model) =>
-			fn(value, field, model, defaults(customMessages, resources));
+		// fn.locale = function (customMessages) {
+		// 	return function (value, field, model) {
+		// 		return fn(value, field, model, defaults(customMessages, resources));
+		// 	}
+		// };
+		fn.locale = (customMessages) => (value, field, model) => fn(value, field, model, defaults(customMessages, resources));
 	}
 });
 

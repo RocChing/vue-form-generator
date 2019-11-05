@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueFormGenerator from "../../../src";
+
 let fields = [];
 let fieldOption = VueFormGenerator.fieldsLoader.default;
 for (let key in fieldOption) {

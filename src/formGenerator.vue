@@ -235,7 +235,7 @@ export default {
         }
         this.eventBus.$on("field-validated", counter);
         this.eventBus.$emit("validate-fields", this);
-      });
+      }).catch(e => {});
     },
 
     // Clear validation errors

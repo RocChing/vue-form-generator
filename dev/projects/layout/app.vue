@@ -35,6 +35,7 @@
                 :options="formOptions"
                 tag="div"
                 ref="form"
+                @validated="onValidated"
               ></vue-form-generator>
             </div>
           </div>
@@ -51,7 +52,7 @@
 
 <script>
 import mixinUtils from "../../mixins/utils.js";
-
+import validators from "../../../src/utils/validators";
 export default {
   mixins: [mixinUtils],
 
@@ -64,10 +65,10 @@ export default {
       isNewModel: false,
       selected: [],
       model: {
-        name: "David",
-        age: 10,
+        name: "",
+        age: null,
         province: null,
-        gender: 3,
+        gender: null,
         country: "",
         hobby: [],
         file: null,
@@ -80,14 +81,15 @@ export default {
       formOptions: {
         validateAfterLoad: false,
         validateAfterChanged: true,
-        validateBeforeSave: true
+        validateBeforeSave: true,
+        validationErrorClass: "has-error"
       }
     };
   },
 
   methods: {
     onSubmit(model, schema, event) {
-      console.log(model);
+      //console.log(model);
       event.preventDefault();
     },
     showWarning() {
@@ -122,21 +124,28 @@ export default {
               },
               label: "姓名",
               model: "name",
+              required: true,
+              validator: "required",
               placeholder: "请输入姓名"
             },
             {
               type: "input",
               fieldOptions: {
-                inputType: "number"
+                inputType: "number",
+                min: 20
               },
               label: "年龄",
               model: "age",
+              required: true,
+              validator: ["required", "number"],
               placeholder: "请输入年龄"
             },
             {
               type: "radios",
               label: "性别",
               model: "gender",
+              required: true,
+              validator: "required",
               values: [
                 { value: 1, name: "男" },
                 { value: 2, name: "女" },
@@ -159,6 +168,8 @@ export default {
               label: "省份",
               model: "province",
               placeholder: "请输入省份",
+              required: true,
+              validator: "required",
               fieldOptions: {
                 noneSelectedText: "请选择"
               },
@@ -186,6 +197,8 @@ export default {
               type: "textArea",
               model: "desc",
               label: "描述",
+              required: true,
+              validator: "required",
               fieldOptions: {
                 rows: 5
               }
@@ -194,6 +207,7 @@ export default {
               type: "submit",
               fieldOptions: {
                 buttonText: "提交",
+                validateBeforeSubmit: true,
                 onSubmit: this.onSubmit
               }
             }
@@ -299,6 +313,7 @@ export default {
               styleClasses: ["col-sm-12"],
               fieldOptions: {
                 buttonText: "提交",
+                validateBeforeSubmit: true,
                 onSubmit: this.onSubmit
               }
             }
@@ -410,6 +425,7 @@ export default {
               styleClasses: ["col-sm-12"],
               fieldOptions: {
                 buttonText: "提交",
+                validateBeforeSubmit: true,
                 onSubmit: this.onSubmit
               }
             }
@@ -440,7 +456,6 @@ export default {
           this.setClasses(field.fields);
         } else if (field.type === "submit") {
           field.fieldWrapperClasses = ["center"];
-          console.log("submit-1");
           continue;
         }
         field.labelClasses =

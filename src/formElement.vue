@@ -116,10 +116,10 @@ export default {
     },
     fieldRowClasses() {
       let baseClasses = {
-        [objGet(this.options, "validationErrorClass", "")]: this.fieldHasErrors,
-        [objGet(this.options, "validationSuccessClass", "")]:
+        [objGet(this.options, "validationErrorClass", "error")]: this.fieldHasErrors,
+        [objGet(this.options, "validationSuccessClass", "success")]:
           !this.fieldHasErrors && this.childTouched,
-        [objGet(this.options, "validationCleanClass", "")]:
+        [objGet(this.options, "validationCleanClass", "clean")]:
           !this.fieldHasErrors && !this.childTouched,
         disabled: this.getValueFromOption(this.field, "disabled"),
         readonly: this.getValueFromOption(this.field, "readonly"),
