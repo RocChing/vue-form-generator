@@ -67,6 +67,7 @@ export default {
       model: {
         name: "",
         age: null,
+        birthday: null,
         province: null,
         gender: null,
         country: "",
@@ -124,7 +125,7 @@ export default {
               },
               label: "姓名",
               model: "name",
-              //required: true,
+              required: true,
               validator: "required",
               placeholder: "请输入姓名"
             },
@@ -144,13 +145,24 @@ export default {
               type: "radios",
               label: "性别",
               model: "gender",
-              //required: true,
+              required: true,
               validator: "required",
               values: [
                 { value: 1, name: "男" },
                 { value: 2, name: "女" },
                 { value: 3, name: "未知" }
               ]
+            },
+            {
+              type: "input",
+              fieldOptions: {
+                inputType: "date"
+              },
+              label: "生日",
+              model: "birthday",
+              required: true,
+              validator: ["date"],
+              placeholder: "请输入生日"
             },
             {
               type: "checkboxs",
@@ -168,7 +180,7 @@ export default {
               label: "省份",
               model: "province",
               placeholder: "请输入省份",
-              //required: true,
+              required: true,
               validator: "required",
               fieldOptions: {
                 noneSelectedText: "请选择"
@@ -197,7 +209,7 @@ export default {
               type: "textArea",
               model: "desc",
               label: "描述",
-              //required: true,
+              required: true,
               validator: "required",
               fieldOptions: {
                 rows: 5

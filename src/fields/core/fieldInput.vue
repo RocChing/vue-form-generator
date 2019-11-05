@@ -89,14 +89,14 @@ export default {
     },
     formatDatetimeToModel(newValue, oldValue) {
       let defaultFormat = DATETIME_FORMATS[this.inputType];
-      let m = fecha.parse(newValue, defaultFormat);
-      if (m !== false) {
-        if (this.schema.format) {
-          newValue = fecha.format(m, this.schema.format);
-        } else {
-          newValue = m.valueOf();
-        }
-      }
+			let m = fecha.parse(newValue, defaultFormat);
+      // if (m !== false) {
+      //   if (this.schema.format) {
+      //     newValue = fecha.format(m, this.schema.format);
+      //   } else {
+      //     newValue = m.valueOf();
+      //   }
+			// }
       this.updateModelValue(newValue, oldValue);
     },
     formatNumberToModel(newValue, oldValue) {

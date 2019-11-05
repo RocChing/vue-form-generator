@@ -96,9 +96,10 @@ const validators = {
 	integer(value, field, model, messages = resources) {
 		let res = checkEmpty(value, field.required, messages);
 		if (res != null) return res;
+
 		let errs = validators.number(value, field, model, messages);
 
-		if (!isInteger(value)) {
+		if (!isInteger(value) || isNaN(value)) {
 			errs.push(msg(messages.invalidInteger));
 		}
 
