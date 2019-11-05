@@ -36,16 +36,17 @@ export default {
 		},
 		eventBus: {
 			type: Object
-		},
-		fieldID: {
-			type: String
 		}
+		// ,
+		// fieldID: {
+		// 	type: String
+		// }
 	},
 
 	data() {
-		const fieldUID = uniqueId(this.fieldID + "_");
+		//const fieldUID = uniqueId(this.fieldID + "_");
 		return {
-			fieldUID,
+			//fieldUID,
 			touched: false,
 			errors: [],
 			debouncedValidateFunc: null,
@@ -86,6 +87,12 @@ export default {
 					this.updateModelValue(newValue, oldValue);
 				}
 			}
+		},
+		fieldID() {
+			return this.getValueFromOption(this.schema, "id");
+		},
+		fieldUID() {
+			return this.fieldID + "_";
 		},
 		disabled() {
 			return this.getValueFromOption(this.schema, "disabled");

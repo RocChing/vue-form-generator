@@ -17,9 +17,10 @@
           :checked="isItemChecked(item)"
           :class="myClasses"
           :required="required"
+          :title="getItemName(item)"
           v-attributes="'input'"
         />
-        {{ getItemName(item) }}
+        {{ getItemNameLabel(item) }}
       </label>
     </template>
     <template v-else>
@@ -113,6 +114,14 @@ export default {
       } else {
         return item;
       }
+    },
+    getItemNameLabel(item) {
+      let showLabel = this.fieldOptions.showLabel;
+      if (showLabel === undefined) {
+        showLabel = true;
+      }
+      if (showLabel) return this.getItemName(item);
+      return "";
     },
     onSelection(item) {
       this.value = this.getItemValue(item);
