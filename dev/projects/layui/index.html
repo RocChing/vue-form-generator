@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>vue-form-generator 测试表单-layui</title>
   <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> -->
   <script src="https://www.layuicdn.com/layui/layui.js"></script>
 </head>
 
@@ -13,11 +14,21 @@
   <div id="app"></div>
   <script src="/layui.js"></script>
   <script>
-    layui.use(['form', 'element', 'upload', 'laydate'], function () {
+    layui.use(["jquery", "form", "element", "upload", "laydate"], function () {
       var laydate = layui.laydate;
+      var form = layui.form;
 
       laydate.render({
-        elem: '#goToSchoolDate' //指定元素
+        elem: "#goToSchoolDate" //指定元素
+      });
+
+      form.on("select(province)", function (data) {
+        console.log(data);
+      });
+
+      form.on("submit(btn_form)", function (data) {
+        layer.msg(JSON.stringify(data.field));
+        return false;
       });
     });
   </script>

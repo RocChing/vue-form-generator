@@ -32,6 +32,11 @@
 </template>
 <script>
 import mixinUtils from "../../mixins/utils.js";
+// require("../libs/layui/layui.js");
+// let layui = window.layui;
+// layui.config({
+//   dir: "/libs/layui/"
+// });
 export default {
   mixins: [mixinUtils],
 
@@ -116,6 +121,7 @@ export default {
       {
         type: "select",
         label: "省份",
+        id: "province",
         model: "province",
         placeholder: "请输入省份",
         required: true,
@@ -128,7 +134,13 @@ export default {
           { id: 2, name: "天津市" },
           { id: 3, name: "上海市" },
           { id: 4, name: "重庆市" }
-        ]
+        ],
+        attributes: {
+          input: {
+            "lay-filter": "province"
+          },
+          wrapper: {}
+        }
       },
       {
         type: "upload",
@@ -148,14 +160,22 @@ export default {
         validator: "required",
         fieldOptions: {
           rows: 5
-        }
+        },
+        inputName: "desc"
       },
       {
         type: "submit",
         fieldOptions: {
           buttonText: "提交",
-          validateBeforeSubmit: true,
-          onSubmit: this.onSubmit
+          validateBeforeSubmit: false //,
+          //onSubmit: this.onSubmit
+        },
+        attributes: {
+          input: {
+            "lay-filter": "btn_form",
+            "lay-submit": ""
+          },
+          wrapper: {}
         }
       }
     ];
@@ -224,6 +244,30 @@ export default {
         field.fieldClasses = [clsName];
       }
     }
+  },
+  created() {
+    // let that = this;
+    // this.$nextTick(function() {
+    //   layui.use(["jquery", "form", "element", "upload", "laydate"], function() {
+    //     var laydate = layui.laydate;
+    //     var form = layui.form;
+
+    //     laydate.render({
+    //       elem: "#goToSchoolDate" //指定元素
+    //     });
+
+    //     form.on("select(province)", function(data) {
+    //       console.log(data);
+    //       that.model.province = data.value;
+    //       that.key++;
+    //     });
+
+    //     form.on("submit(btn_form)", function(data) {
+    //       layer.msg(JSON.stringify(data.field));
+    //       return false;
+    //     });
+    //   });
+    // });
   }
 };
 </script>
